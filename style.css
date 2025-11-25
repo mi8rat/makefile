@@ -367,20 +367,6 @@ body {
     background: #141414;
 }
 
-.youtube {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
-}
-.youtube::before {
-    background: #ff0000;
-}
-
-.tiktok {
-    background: linear-gradient(135deg, #000000, #333333);
-}
-.tiktok::before {
-    background: #000000;
-}
-
 .snapchat {
     background: linear-gradient(135deg, #fffc00, #ccca00);
 }
@@ -389,13 +375,6 @@ body {
 }
 .snapchat::before {
     background: #fffc00;
-}
-
-.telegram {
-    background: linear-gradient(135deg, #0088cc, #006699);
-}
-.telegram::before {
-    background: #0088cc;
 }
 
 .btn-custom {
