@@ -1,11 +1,27 @@
-# a very simple console-based E-Commerce app in C++
+# complete console-based E-Commerce app in C++
 
-a very simple console-based E-Commerce app in C++. This will be a basic program that allows the user to:
+Features:
 
-View products
+1. View products
 
-Add products to a cart
+2. Add products to cart
 
-View the cart
+3. View cart with quantities combined
 
-Checkout
+4. Remove products from cart
+
+5. Checkout with total price
+
+6. Handle invalid inputs
+
+# How to Run
+
+1. Open Terminal.
+2. Compile the program using g++
+```
+g++ -o ecommerce ecommerce.cpp
+```
+3. Run the program:
+```
+./ecommerce
+```
