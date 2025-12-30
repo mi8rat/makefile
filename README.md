@@ -1,27 +1,11 @@
-# a very simple console-based E-Commerce app in Java
+# a very simple console-based E-Commerce app in C++
 
-It has:
+a very simple console-based E-Commerce app in C++. This will be a basic program that allows the user to:
 
-1. Products
+View products
 
-2. Cart
+Add products to a cart
 
-3. Add to cart
+View the cart
 
-4. View cart
-
-5. Checkout
-
-This is perfect for learning or small projects.
-
-# ▶ How to Run
-
-1. Save as ECommerceApp.java
-2. Compile
-```
-javac ECommerceApp.java
-```
-3. Run
-```
-java ECommerceApp
-```
+Checkout
