@@ -1,85 +1,108 @@
-# FreeBSD Configuration Reference (roff/groff)
+# do-snapshot (Man Page Installer)
 
-A single-file roff document (`freebsd_config.ms`) containing annotated
-configuration templates for a standard FreeBSD 14.x server installation,
-typeset with the **groff ms** macro package.
+This repository provides a simple script to install the **`do-snapshot` man page** on your system, allowing you to access documentation via:
 
----
-
-## Files
-
-```
-freebsd_config.ms   — Main roff source document
-README.md           — This file
+```bash
+man do-snapshot
 ```
 
 ---
 
-## Configurations Covered
+## 📦 Contents
 
-| # | File | Purpose |
-|---|------|---------|
-| 1 | `/boot/loader.conf` | Kernel modules, boot parameters |
-| 2 | `/etc/rc.conf` | Services, networking, startup |
-| 3 | `/etc/sysctl.conf` | Kernel runtime tuning |
-| 4 | `/etc/resolv.conf` | DNS resolver |
-| 5 | `/etc/pf.conf` | PF firewall rules |
-| 6 | `/etc/ssh/sshd_config` | Hardened SSH server |
-| 7 | `/etc/periodic.conf` | Daily/weekly/monthly maintenance |
-| 8 | `/etc/pkg/FreeBSD.conf` | PKG repository |
-| 9 | `~/.profile` / `~/.shrc` | User shell environment |
+* `do-snapshot.1` → Roff man page file
+* `install-man.sh` → Installation script
 
 ---
 
-## Requirements
+## ⚙️ Requirements
 
-- **groff** (GNU roff) — available on most Unix-like systems
-- On FreeBSD: `pkg install groff`
-- On Debian/Ubuntu: `apt install groff`
-- On macOS: `brew install groff`
+* Linux or Unix-like system
+* `man` command installed
+* `mandb` (optional but recommended)
 
 ---
 
-## Rendering
+## 🚀 Installation
 
-```sh
-# PDF (recommended)
-groff -ms freebsd_config.ms -T pdf > freebsd_config.pdf
+### 1. Clone or download the project
 
-# PostScript → PDF (via ps2pdf)
-groff -ms freebsd_config.ms | ps2pdf - freebsd_config.pdf
-
-# Plain text (terminal preview)
-groff -ms -T ascii freebsd_config.ms | less
-
-# HTML
-groff -ms -T html freebsd_config.ms > freebsd_config.html
+```bash
+git clone <your-repo-url>
+cd <repo-folder>
 ```
 
 ---
 
-## Customisation
+### 2. Make the installer executable
 
-Before applying any config to a live system, review and adjust:
-
-- **Interface name** — replace `em0` with your NIC (e.g. `vtnet0`, `igb0`, `bge0`)
-- **Hostname** — change `bsd01.local` in `rc.conf`
-- **IP address / gateway** — update the static IP block if not using DHCP
-- **SSH port** — change port `22` if desired (update `pf.conf` to match)
-- **ZFS dataset** — update `vfs.root.mountfrom` in `loader.conf` if your pool name differs
+```bash
+chmod +x install-man.sh
+```
 
 ---
 
-## Security Notes
+### 3. Run the installer
 
-- `sshd_config` disables **password authentication** — add your public key to
-  `~/.ssh/authorized_keys` before enabling `sshd`.
-- `pf.conf` includes brute-force protection on SSH via the `<bruteforce>` table.
-- `sysctl.conf` hides process information from other users and randomises PIDs.
-- `rc.conf` disables **sendmail** entirely; install a proper MTA if mail is needed.
+```bash
+./install-man.sh
+```
 
 ---
 
-## License
+### 4. Verify installation
 
-Public domain. Use freely, adapt as needed.
+```bash
+man do-snapshot
+```
+
+---
+
+## 🔧 Alternative (User-local install, no sudo)
+
+If you don’t want to use `sudo`, install locally:
+
+```bash
+mkdir -p ~/.local/share/man/man1
+cp do-snapshot.1 ~/.local/share/man/man1/
+mandb ~/.local/share/man
+```
+
+Then run:
+
+```bash
+man do-snapshot
+```
+
+---
+
+## 🧹 Uninstall
+
+To remove the man page:
+
+```bash
+sudo rm /usr/local/share/man/man1/do-snapshot.1
+sudo mandb
+```
+
+---
+
+## 📝 About
+
+The `do-snapshot` man page documents a Makefile-based automation tool for:
+
+* Creating DigitalOcean droplet snapshots
+* Cleaning up old snapshots automatically
+
+---
+
+## ⚠️ Notes
+
+* On macOS, `mandb` may not be available (this is normal)
+* If `man` doesn’t find the page, try reopening your terminal
+
+---
+
+## 📄 License
+
+No license — use freely.
